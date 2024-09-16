@@ -11,9 +11,9 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class ProductResponseDTO {
+public class ProductsResponseDTO {
 
     private StatusDTO statusDTO;
-    private ProductDTO productDTO;
+    private List<ProductDTO> productDTOS;
 
 }

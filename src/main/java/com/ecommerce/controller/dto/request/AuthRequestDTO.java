@@ -1,4 +1,4 @@
-package com.ecommerce.controller.dto.request.Auth;
+package com.ecommerce.controller.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

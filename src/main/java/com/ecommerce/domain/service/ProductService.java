@@ -2,16 +2,18 @@ package com.ecommerce.domain.service;
 
 
 import com.ecommerce.controller.dto.ProductDTO;
+import com.ecommerce.controller.dto.request.ProductRequestDTO;
 import com.ecommerce.controller.dto.response.ProductResponseDTO;
+import com.ecommerce.controller.dto.response.ProductsResponseDTO;
 import com.ecommerce.controller.dto.response.ResponseDTO;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface ProductService {
 
-    ProductResponseDTO getProducts();
+    ProductsResponseDTO getProducts();
 
-    ResponseDTO createProduct(ProductDTO productDTO);
+    ProductResponseDTO getProductById(Integer id);
 
-    ResponseDTO updateProduct(ProductDTO productDTO);
+    ResponseDTO createProduct(ProductRequestDTO productRequestDTO);
+
+    ResponseDTO updateProduct(ProductRequestDTO productRequestDTO);
 }

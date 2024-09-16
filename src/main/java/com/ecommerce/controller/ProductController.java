@@ -2,7 +2,9 @@ package com.ecommerce.controller;
 
 
 import com.ecommerce.controller.dto.ProductDTO;
+import com.ecommerce.controller.dto.request.ProductRequestDTO;
 import com.ecommerce.controller.dto.response.ProductResponseDTO;
+import com.ecommerce.controller.dto.response.ProductsResponseDTO;
 import com.ecommerce.controller.dto.response.ResponseDTO;
 import com.ecommerce.controller.dto.response.StatusDTO;
 import com.ecommerce.domain.service.ProductService;
@@ -27,9 +29,24 @@ public class ProductController {
     @CrossOrigin(origins= "*" , allowedHeaders = "*")
     @ApiOperation(value = "Product list.", response = ResponseDTO.class)
     @RequestMapping(value = "/v1/ecommerce/product", method = RequestMethod.GET)
-    public ProductResponseDTO getProducts(){
+    public ProductsResponseDTO getProducts(){
         try {
             return productService.getProducts();
+        }catch (Exception e){
+            return ProductsResponseDTO.builder().statusDTO(
+                    StatusDTO.builder().code("400").detailMessageError(e.getMessage()).build()
+            ).build();
+        }
+    }
+
+    @CrossOrigin(origins= "*" , allowedHeaders = "*")
+    @ApiOperation(value = "Product list.", response = ResponseDTO.class)
+    @RequestMapping(value = "/v1/ecommerce/product/{id}", method = RequestMethod.GET)
+    public ProductResponseDTO getProducts(
+            @PathVariable Integer id
+    ){
+        try {
+            return productService.getProductById(id);
         }catch (Exception e){
             return ProductResponseDTO.builder().statusDTO(
                     StatusDTO.builder().code("400").detailMessageError(e.getMessage()).build()
@@ -41,10 +58,10 @@ public class ProductController {
     @ApiOperation(value = "Product create.", response = ResponseDTO.class)
     @RequestMapping(value = "/v1/ecommerce/product", method = RequestMethod.POST)
     public ResponseDTO createProducts(
-            @RequestBody @Validated ProductDTO productDTO
+            @RequestBody @Validated ProductRequestDTO productRequestDTO
             ){
         try {
-            return productService.createProduct(productDTO);
+            return productService.createProduct(productRequestDTO);
         }catch (Exception e){
             return ResponseDTO.builder().status(StatusDTO.builder().code("500").detailMessageError(e.getMessage()).build()).build();
         }
@@ -55,10 +72,10 @@ public class ProductController {
     @ApiOperation(value = "Product update.", response = ResponseDTO.class)
     @RequestMapping(value = "/v1/ecommerce/product", method = RequestMethod.PUT)
     public ResponseDTO updateProducts(
-            @RequestBody @Validated ProductDTO productDTO
+            @RequestBody @Validated ProductRequestDTO productRequestDTO
     ){
         try {
-            return productService.updateProduct(productDTO);
+            return productService.updateProduct(productRequestDTO);
         }catch (Exception e){
             return ResponseDTO.builder().status(StatusDTO.builder().code("500").detailMessageError(e.getMessage()).build()).build();
         }

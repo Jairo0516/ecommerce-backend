@@ -1,7 +1,7 @@
 package com.ecommerce.controller;
 
 
-import com.ecommerce.controller.dto.request.Auth.AuthRequestDTO;
+import com.ecommerce.controller.dto.request.AuthRequestDTO;
 import com.ecommerce.controller.dto.response.AuthResponseDTO;
 import com.ecommerce.controller.dto.response.ResponseDTO;
 import com.ecommerce.controller.dto.response.StatusDTO;
@@ -11,7 +11,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

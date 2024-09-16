@@ -163,6 +163,13 @@
             <version>0.9.1</version>
         </dependency>
 
+        <!-- AWS SDK for S3 -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.12.430</version>
+        </dependency>
+
     </dependencies>
 
     <build>
