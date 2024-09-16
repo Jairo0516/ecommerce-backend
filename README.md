@@ -1,4 +1,4 @@
-# This repo is fibonacci dev
+# This repo is ecommerce dev
 
 
 [![Build Status](https://travis-ci.org/codecentric/springboot-sample-app.svg?branch=master)](https://travis-ci.org/codecentric/springboot-sample-app)

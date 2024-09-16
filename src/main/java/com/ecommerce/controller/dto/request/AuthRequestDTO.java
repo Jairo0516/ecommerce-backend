@@ -1,4 +1,4 @@
-package com.ecommerce.controller.dto.response;
+package com.ecommerce.controller.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -7,9 +7,10 @@ import lombok.*;
 @Builder(toBuilder = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class ResponseDTO {
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+public class AuthRequestDTO {
 
-    private StatusDTO status;
+    private String email;
+    private String password;
 
 }

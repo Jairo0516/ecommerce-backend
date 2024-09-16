@@ -8,8 +8,10 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class ResponseDTO {
+public class AuthResponseDTO {
 
-    private StatusDTO status;
+    private String rol;
+    private String token;
+    private StatusDTO statusDTO;
 
 }
