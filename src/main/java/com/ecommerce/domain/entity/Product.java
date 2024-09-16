@@ -24,10 +24,10 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "image", updatable = false)
+    @Column(name = "image")
     private String image;
 
-    @Column(name = "value", updatable = false)
+    @Column(name = "value")
     private Float value;
 
     @Column(name = "count")

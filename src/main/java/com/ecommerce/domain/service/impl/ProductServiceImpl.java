@@ -12,7 +12,6 @@ import com.ecommerce.domain.repository.ProductRepository;
 import com.ecommerce.domain.service.ProductService;
 import com.ecommerce.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -128,4 +127,21 @@ public class ProductServiceImpl implements ProductService {
 
         return responseDTO;
     }
+
+
+    @Override
+    public ResponseDTO deleteProduct(ProductDTO productDTO) {
+        ResponseDTO responseDTO = new ResponseDTO();
+        try {
+            Product product = objectBuilder.map(productDTO, Product.class);
+            productRepository.delete(product);
+            responseDTO.setStatus(StatusDTO.builder().code("200").build());
+
+        }catch (Exception e){
+            responseDTO.setStatus(StatusDTO.builder().code("500").detailMessageError(e.getMessage()).build());
+        }
+
+        return responseDTO;
+    }
+
 }

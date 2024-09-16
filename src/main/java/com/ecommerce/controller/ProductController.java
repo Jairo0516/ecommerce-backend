@@ -42,7 +42,7 @@ public class ProductController {
     @CrossOrigin(origins= "*" , allowedHeaders = "*")
     @ApiOperation(value = "Product list.", response = ResponseDTO.class)
     @RequestMapping(value = "/v1/ecommerce/product/{id}", method = RequestMethod.GET)
-    public ProductResponseDTO getProducts(
+    public ProductResponseDTO getProduct(
             @PathVariable Integer id
     ){
         try {
@@ -76,6 +76,20 @@ public class ProductController {
     ){
         try {
             return productService.updateProduct(productRequestDTO);
+        }catch (Exception e){
+            return ResponseDTO.builder().status(StatusDTO.builder().code("500").detailMessageError(e.getMessage()).build()).build();
+        }
+    }
+
+
+    @CrossOrigin(origins= "*" , allowedHeaders = "*")
+    @ApiOperation(value = "Product update.", response = ResponseDTO.class)
+    @RequestMapping(value = "/v1/ecommerce/product", method = RequestMethod.DELETE)
+    public ResponseDTO deleteProducts(
+            @RequestBody @Validated ProductRequestDTO productRequestDTO
+    ){
+        try {
+            return productService.deleteProduct(productRequestDTO);
         }catch (Exception e){
             return ResponseDTO.builder().status(StatusDTO.builder().code("500").detailMessageError(e.getMessage()).build()).build();
         }
