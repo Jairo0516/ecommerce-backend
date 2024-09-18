@@ -1,7 +1,11 @@
 package com.ecommerce.domain.entity;
+import com.ecommerce.domain.entity.key.OrderKey;
 import com.ecommerce.domain.entity.key.ProductKey;
 import jakarta.persistence.*;
 import lombok.*;
+import org.joda.time.DateTime;
+
+import java.util.Date;
 
 
 @Entity
@@ -10,11 +14,10 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Table(name = "orders", schema = "public")
-@IdClass(ProductKey.class)
+@IdClass(OrderKey.class)
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Integer id;
 
@@ -32,6 +35,6 @@ public class Order {
 
 
     @Column(name = "create_date", updatable = false)
-    private Float createDate;
+    private String createDate;
 
 }
